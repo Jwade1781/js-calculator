@@ -45,3 +45,16 @@ html, body {
     width: 23%;
     font-size: larger;
 }
+
+.clear {
+    background-color: #bbf;
+}
+
+.delete {
+    background-color: brown;
+}
+button:hover {
+    background-color: grey;
+    border: 0.5px solid white;
+    transform: scale(1.05);
+}
