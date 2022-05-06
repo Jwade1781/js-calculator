@@ -40,15 +40,56 @@ function addEvents() {
         })
     };
 
+    const addEventOperatorsBtn = () => {
+        const getValues = () => {};
+        const addValues = (val1, val2) => {return val1 + val2};
+        const subValues = (val1, val2) => {return val1 - val2};
+        const divValues = (val1, val2) => {{return val1 / val2}};
+        const multiValues = (val1, val2) => {{return val1 * val2}};
+
+        const OPERATOR_PRIORITY_DIC = {
+            "+" : 0,
+            "-" : 0,
+            "x" : 1,
+            "/" : 1
+        }
+
+        const OPERATOR_DIC = {
+            "+" : [OPERATOR_PRIORITY_DIC["+"], addValues],
+            "-" : [OPERATOR_PRIORITY_DIC["-"], subValues],
+            "x" : [OPERATOR_PRIORITY_DIC["x"], multiValues],
+            "/" : [OPERATOR_PRIORITY_DIC["/"], divValues],
+        };
+
+        const OPERATOR = document.querySelectorAll(".operator");
+        OPERATOR.forEach((operator) => {
+            operator.addEventListener("click", () => {
+                const event = OPERATOR_DIC[operator.textContent];
+            });
+        });
+        console.log(OPERATOR_DIC["+"])
+    };
+    
+    // Need to construct a priority queue / heap to account for operator priority
+    const addEventEqualBtn = () => {
+        let operatorPriorityQueue = {};
+
+        const EQUAL = document.querySelector(".equal");
+        const parseOperators = () => {
+            console.log("Parsing operators")
+            
+        };
+
+        EQUAL.addEventListener("click", () => {
+            parseOperators();
+        });
+    };
+
     addEventClearBtn();
     addEventDeleteBtn();
+    addEventEqualBtn();
     addEventSmallBtn();
+    addEventOperatorsBtn();
+
+    
 }
-
-
-
-//const add = (val1, val2) => {
-  //  console.log(val1 + " " + val2);
-  //  writeScreen(Number(val1) + Number(val2))};
-
-//add(1, 3);
